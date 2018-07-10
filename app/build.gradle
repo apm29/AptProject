@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -16,6 +17,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug{
+            minifyEnabled false
+        }
+
+        flavorDimensions "channel"
+        productFlavors {
+            official { dimension "channel" }
+            yingyongbao { dimension "channel" }
         }
     }
 
@@ -37,5 +48,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(path: ':annotations')
-    annotationProcessor project(':processor')
+    kapt project(':processor')
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 }

@@ -7,9 +7,9 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Enabler {
+public @interface EnableField {
 
-    String NO_NO_NO = "NO_NO_NO";
+    String NO_NO_NO = "NO_VALUE";
     String value() default NO_NO_NO;//字段名称
     int group() default 0;
 }
